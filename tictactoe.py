@@ -28,9 +28,59 @@ spielerX = input("Geben Sie den Namen von Spieler X ein: ")
 spielerO = input("Geben Sie den Namen von Spieler O ein: ")
 print_spielfeld(spielfeld)
 
+# zug_setzen_spielerO(spielfeld)
+# print_spielfeld(spielfeld)
+# zug_setzen_spielerX(spielfeld)
+# print_spielfeld(spielfeld)
+# zug_setzen_spielerO(spielfeld)
+# print_spielfeld(spielfeld)
+# zug_setzen_spielerX(spielfeld)
+# print_spielfeld(spielfeld)
+# zug_setzen_spielerO(spielfeld)
+# print_spielfeld(spielfeld)
+# zug_setzen_spielerX(spielfeld)
+# print_spielfeld(spielfeld)
 
 #Gewinnstatus überprüfen
-ergebnis = 0
-for i in spielfeld:
-    ergebnis = spielfeld[i][ergebnis] + ergebnis
-print(ergebnis)
+def gewinner_prüfen(spielfeld):
+#Horizontale Prüfung
+    i=1
+    while i < 4:
+        ergebnis=""
+        j=1
+        while j < 4:
+            ergebnis += spielfeld[i][j]
+            j = j+1
+        if ergebnis == "XXX":
+            return "X"
+        elif ergebnis == "OOO":
+            return "O"
+        i = i+1
+#Vertikale Prüfung       
+    j=1
+    while j < 4:
+        ergebnis=""
+        i=1
+        while i < 4:
+            ergebnis += spielfeld[i][j]
+            i = i+1
+        if ergebnis == "XXX":
+            return "X"
+        elif ergebnis == "OOO":
+            return "O"
+        j = j+1  
+#Diagonale Prüfung  
+    #Diagonale (links-oben/rechts-unten)
+    ergebnis = spielfeld[1][1] + spielfeld[2][2] + spielfeld[3][3]
+    if ergebnis == "XXX":
+        return "X"
+    elif ergebnis =="OOO":
+        return "O"
+    #Diagonale (rechts-oben/links-unten)
+    ergebnis = spielfeld[1][3] + spielfeld[2][2] + spielfeld[3][1]
+    if ergebnis == "XXX":
+        return "X"
+    elif ergebnis == "OOO":
+        return "O"
+    
+    return None   
