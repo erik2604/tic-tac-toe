@@ -29,6 +29,7 @@ def zug_setzen_spielerX(spielfeld):
             spielfeld[eingabe_i][eingabe_j] = "X"
             break
         except ValueError:
+            print("Bitte geben Sie eine Zahl ein!")
             continue
 
 def zug_setzen_spielerO(spielfeld):
@@ -48,6 +49,7 @@ def zug_setzen_spielerO(spielfeld):
             spielfeld[eingabe_i][eingabe_j] = "O"
             break
         except ValueError:
+            print("Bitte geben Sie eine Zahl ein!")
             continue
 
 
