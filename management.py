@@ -13,14 +13,42 @@ def print_spielfeld(spielfeld):
 
 #Spielerzüge setzen
 def zug_setzen_spielerX(spielfeld):
-    eingabe_i = int(input("In welcher Zeile wollen Sie Ihr Kreuz setzen? (1-3) "))
-    eingabe_j = int(input("In welcher Spalte wollen Sie Ihr Kreuz setzen? (1-3) "))
-    spielfeld[eingabe_i][eingabe_j] = "X"
+    while True:
+        try:
+            eingabe_i = int(input("In welcher Zeile wollen Sie Ihr Kreuz setzen? (1-3) "))
+            if eingabe_i < 1 or eingabe_i > 3:
+                print("Bitte geben Sie eine Zahl zwischen 1 und 3 ein!")
+                continue
+            eingabe_j = int(input("In welcher Spalte wollen Sie Ihr Kreuz setzen? (1-3) "))
+            if eingabe_j < 1 or eingabe_j > 3:
+                print("Bitte geben Sie eine Zahl zwischen 1 und 3 ein!")
+                continue
+            if spielfeld[eingabe_i][eingabe_j] != "-":
+                print("Dieses Feld ist bereits besetzt!")
+                continue
+            spielfeld[eingabe_i][eingabe_j] = "X"
+            break
+        except ValueError:
+            continue
 
 def zug_setzen_spielerO(spielfeld):
-    eingabe_i = int(input("In welcher Zeile wollen Sie Ihr Kreuz setzen? (1-3) "))
-    eingabe_j = int(input("In welcher Spalte wollen Sie Ihr Kreuz setzen? (1-3) "))
-    spielfeld[eingabe_i][eingabe_j] = "O"
+    while True:
+        try:
+            eingabe_i = int(input("In welcher Zeile wollen Sie Ihr Kreuz setzen? (1-3) "))
+            if eingabe_i < 1 or eingabe_i > 3:
+                print("Bitte geben Sie eine Zahl zwischen 1 und 3 ein!")
+                continue
+            eingabe_j = int(input("In welcher Spalte wollen Sie Ihr Kreuz setzen? (1-3) "))
+            if eingabe_j < 1 or eingabe_j > 3:
+                print("Bitte geben Sie eine Zahl zwischen 1 und 3 ein!")
+                continue
+            if spielfeld[eingabe_i][eingabe_j] != "-":
+                print("Dieses Feld ist bereits besetzt!")
+                continue
+            spielfeld[eingabe_i][eingabe_j] = "O"
+            break
+        except ValueError:
+            continue
 
 
 
