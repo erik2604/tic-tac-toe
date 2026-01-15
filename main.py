@@ -17,6 +17,11 @@ while True:
     management.zug_setzen_spielerX(spielfeld)
     clear_screen() #Terminal clear
     management.print_spielfeld(spielfeld)
+
+    if management.unentschieden_prüfen(spielfeld):
+        print("Unentschieden! Niemand hat gewonnen!")
+        break
+    
     gewinner = management.gewinner_prüfen(spielfeld)
     if gewinner == "X":
         print(f"Glückwunsch! {spielerX} hat das Spiel gewonnen!")
@@ -29,6 +34,11 @@ while True:
     management.zug_setzen_spielerO(spielfeld)
     clear_screen() #Terminal clear
     management.print_spielfeld(spielfeld)
+
+    if management.unentschieden_prüfen(spielfeld):
+        print("Unentschieden! Niemand hat gewonnen!")
+        break
+
     gewinner = management.gewinner_prüfen(spielfeld)
     if gewinner == "X":
         print(f"Glückwunsch! {spielerX} hat das Spiel gewonnen!")

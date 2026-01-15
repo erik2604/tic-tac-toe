@@ -99,3 +99,14 @@ def gewinner_prüfen(spielfeld):
     return None   
 
 
+#Unentschieden prüfen
+def unentschieden_prüfen(spielfeld):
+    i=1
+    while i < 4:
+        j=1
+        while j < 4:
+            if spielfeld[i][j] == "-":
+                return None
+            j = j+1
+        i = i+1
+    return True
