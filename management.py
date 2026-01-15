@@ -1,3 +1,9 @@
+import os
+
+#Terminal clear
+def clear_screen():
+    os.system("cls" if os.name == "nt" else "clear")
+
 #Spielfeld anzeigen
 def print_spielfeld(spielfeld):
     i=0
@@ -12,7 +18,7 @@ def print_spielfeld(spielfeld):
 
 
 #Spielerzüge setzen
-def zug_setzen_spielerX(spielfeld):
+def zug_setzen_spieler(spielfeld, symbol):
     while True:
         try:
             eingabe_i = int(input("In welcher Zeile wollen Sie Ihr Kreuz setzen? (1-3) "))
@@ -26,33 +32,11 @@ def zug_setzen_spielerX(spielfeld):
             if spielfeld[eingabe_i][eingabe_j] != "-":
                 print("Dieses Feld ist bereits besetzt!")
                 continue
-            spielfeld[eingabe_i][eingabe_j] = "X"
+            spielfeld[eingabe_i][eingabe_j] = symbol
             break
         except ValueError:
             print("Bitte geben Sie eine Zahl ein!")
             continue
-
-def zug_setzen_spielerO(spielfeld):
-    while True:
-        try:
-            eingabe_i = int(input("In welcher Zeile wollen Sie Ihr Kreuz setzen? (1-3) "))
-            if eingabe_i < 1 or eingabe_i > 3:
-                print("Bitte geben Sie eine Zahl zwischen 1 und 3 ein!")
-                continue
-            eingabe_j = int(input("In welcher Spalte wollen Sie Ihr Kreuz setzen? (1-3) "))
-            if eingabe_j < 1 or eingabe_j > 3:
-                print("Bitte geben Sie eine Zahl zwischen 1 und 3 ein!")
-                continue
-            if spielfeld[eingabe_i][eingabe_j] != "-":
-                print("Dieses Feld ist bereits besetzt!")
-                continue
-            spielfeld[eingabe_i][eingabe_j] = "O"
-            break
-        except ValueError:
-            print("Bitte geben Sie eine Zahl ein!")
-            continue
-
-
 
 #Gewinnstatus überprüfen
 def gewinner_prüfen(spielfeld):
