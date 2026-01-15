@@ -17,26 +17,27 @@ def print_spielfeld(spielfeld):
 
 
 
-#Spielerzüge setzen
-def zug_setzen_spieler(spielfeld, symbol):
+#Spielerzug setzen
+def zug_setzen_spieler(spielfeld, symbol, return_coords=False):
     while True:
         try:
-            eingabe_i = int(input("In welcher Zeile wollen Sie Ihr Kreuz setzen? (1-3) "))
-            if eingabe_i < 1 or eingabe_i > 3:
-                print("Bitte geben Sie eine Zahl zwischen 1 und 3 ein!")
-                continue
-            eingabe_j = int(input("In welcher Spalte wollen Sie Ihr Kreuz setzen? (1-3) "))
-            if eingabe_j < 1 or eingabe_j > 3:
-                print("Bitte geben Sie eine Zahl zwischen 1 und 3 ein!")
-                continue
-            if spielfeld[eingabe_i][eingabe_j] != "-":
+            i = int(input("In welcher Zeile wollen Sie Ihr Kreuz setzen? (1-3) "))
+            j = int(input("In welcher Spalte wollen Sie Ihr Kreuz setzen? (1-3) "))
+
+            if spielfeld[i][j] != "-":
                 print("Dieses Feld ist bereits besetzt!")
                 continue
-            spielfeld[eingabe_i][eingabe_j] = symbol
-            break
+
+            spielfeld[i][j] = symbol
+
+            if return_coords:
+                return i, j
+            else:
+                return
+
         except ValueError:
-            print("Bitte geben Sie eine Zahl ein!")
-            continue
+            print("Bitte geben Sie eine gültige Zahl zwischen 1-3 ein!")
+
 
 #Gewinnstatus überprüfen
 def gewinner_prüfen(spielfeld):
