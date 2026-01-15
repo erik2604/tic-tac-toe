@@ -1,50 +1,34 @@
 import management
+import spielmodus_standard
 
+#Hauptmenü
 while True:
-    spielfeld =[[" ","1","2","3"],
-                ["1","-","-","-"],
-                ["2","-","-","-"],
-                ["3","-","-","-"]]
+    management.clear_screen()
+    print("-Willkommen zu Tic-Tac-Toe!-")
+    print("1) Neues Spiel starten")
+    print("2) Regeln anzeigen")
+    print("3) Beenden")
 
-    #Namen eingeben
-    spielerX = input("Geben Sie den Namen von Spieler X ein: ")
-    spielerO = input("Geben Sie den Namen von Spieler O ein: ")
-    management.clear_screen() #Terminal clear
-    management.print_spielfeld(spielfeld)
+    auswahl = input("Bitte wählen Sie: ")
 
-    #Symbole der Spieler
-    symbole = [(spielerX, "X"),(spielerO, "O")]
-
-    #Spielabbruch bei Unentschieden oder Sieg
-    spiel_läuft = True
-
-    #Spielablauf
-    while spiel_läuft:
-        for name, symbol in symbole:
-            print(f"INFO: {name} hat das Zeichen ({symbol}) und ist an der Reihe!")
-            management.zug_setzen_spieler(spielfeld, symbol)
-
-            management.clear_screen()
-            management.print_spielfeld(spielfeld)
-
-            gewinner = management.gewinner_prüfen(spielfeld)
-            if gewinner == symbol:
-                print(f"Glückwunsch! {name} hat das Spiel gewonnen!")
-                spiel_läuft = False
-                break
-            
-            if management.unentschieden_prüfen(spielfeld):
-                print("Unentschieden! Niemand hat gewonnen!")
-                spiel_läuft = False
-                break
-
-    #Wiederholung des Spiels
-    repeat = input("Wollen Sie noch einmal spielen? (y/n)")
-    if repeat == "y":
+    if auswahl == "1":
         management.clear_screen()
-        continue
-    else:
+        print("Wählen Sie einen der folgenden Spielmodi aus: ")
+        print("1) Spielmodus Standard")
+        spielmodus_wählen = input("Bitte wählen Sie: ")
+        if spielmodus_wählen == "1":
+            management.clear_screen()
+            spielmodus_standard.spiel_starten()
+    elif auswahl == "2":
+        print("Regeln: \n\nSpielmodus Standard: \nSetzen Sie abwechselnd ein X oder ein O. Wer zuerst drei Zeichen ein einer Spalte, Zeile oder Diagonale hat, hat gewonnen!\n")
+        input("Weiter mit Enter")
+    elif auswahl == "3":
         break
+    else:
+        print("Ungültige Eingabe!")
+        input("Weiter mit Enter")
+
+
 
 
 
